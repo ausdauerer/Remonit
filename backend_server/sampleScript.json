@@ -1,0 +1,114 @@
+{
+  "updateInterval": 3000,
+  "args": [173632],
+  "redisClusterNodes": [
+    {
+      "host": "redis-stage-trn-cluster-0001-001.izffbp.0001.aps1.cache.amazonaws.com",
+      "port": 7000
+    },
+    {
+      "host": "redis-stage-trn-cluster-0002-001.izffbp.0001.aps1.cache.amazonaws.com",
+      "port": 7000
+    }
+  ],
+  "User tournament states": {
+    "User 1": {
+      "command": "HGET redis:tournament:{?}:?:joinDetails tournamentState",
+      "arguments": ["ARGV[0]", 1349188634]
+    },
+    "User 2": {
+      "command": "HGET redis:tournament:{?}:?:joinDetails tournamentState",
+      "arguments": [1234, 123]
+    },
+    "User 3": {
+      "command": "HGET redis:tournament:{?}:?:joinDetails tournamentState",
+      "arguments": [1234, 123]
+    }
+  },
+  "Tournament State Abra ka dabra": {
+    "Registered Players": {
+      "command": "ZRANGE redis:tournament:{?}:joinedPlayersQueue 0 -1 WITHSCORES",
+      "arguments": ["ARGV[0]"]
+    },
+    "Non-Registered Players": {
+      "command": "ZRANGE redis:tournament:{?}:joinedPlayersQueue 0 -1",
+      "arguments": [173632]
+    },
+    "Non-Registered Players-2": {
+      "command": "ZRANGE redis:tournament:{?}:joinedPlayersQueue 0 -1",
+      "arguments": [173632]
+    },
+    "Non-Registered Players-3": {
+      "command": "ZRANGE redis:tournament:{?}:joinedPlayersQueue 0 -1",
+      "arguments": [173632]
+    },
+    "User 1": {
+      "command": "HGET redis:tournament:{?}:?:joinDetails tournamentState",
+      "arguments": [173632, 1349188634]
+    }
+  },
+  "User tournament states 2": {
+    "User 1": {
+      "command": "HGET redis:tournament:{?}:?:joinDetails tournamentState",
+      "arguments": [173632, 1349188634]
+    },
+    "User 2": {
+      "command": "HGET redis:tournament:{?}:?:joinDetails tournamentState",
+      "arguments": [1234, 123]
+    },
+    "User 3": {
+      "command": "HGET redis:tournament:{?}:?:joinDetails tournamentState",
+      "arguments": [1234, 123]
+    }
+  },
+  "User tournament states 3": {
+    "User 1": {
+      "command": "HGET redis:tournament:{?}:?:joinDetails tournamentState",
+      "arguments": [173632, 1349188634]
+    },
+    "User 2": {
+      "command": "HGET redis:tournament:{?}:?:joinDetails tournamentState",
+      "arguments": [1234, 123]
+    },
+    "User 3": {
+      "command": "HGET redis:tournament:{?}:?:joinDetails tournamentState",
+      "arguments": [1234, 123]
+    }
+  },
+  "Tournament State Abra ka dabra gili chum": {
+    "Registered Players": {
+      "command": "ZRANGE redis:tournament:{?}:joinedPlayersQueue 0 -1 WITHSCORES",
+      "arguments": [173632]
+    },
+    "Non-Registered Players": {
+      "command": "ZRANGE redis:tournament:{?}:joinedPlayersQueue 0 -1",
+      "arguments": [173632]
+    },
+    "Non-Registered Players-2": {
+      "command": "ZRANGE redis:tournament:{?}:joinedPlayersQueue 0 -1",
+      "arguments": [173632]
+    },
+    "Non-Registered Players-3": {
+      "command": "ZRANGE redis:tournament:{?}:joinedPlayersQueue 0 -1",
+      "arguments": [173632]
+    }
+  },
+  "Tournament State Abra ka dabra gili chummma": {
+    "Registered Players": {
+      "command": "ZRANGE redis:tournament:{?}:joinedPlayersQueue 0 -1 WITHSCORES",
+      "arguments": [173632]
+    },
+    "Non-Registered Players": {
+      "command": "ZRANGE redis:tournament:{?}:joinedPlayersQueue 0 -1",
+      "arguments": [173632]
+    },
+    "Non-Registered Players-2": {
+      "command": "ZRANGE redis:tournament:{?}:joinedPlayersQueue 0 -1",
+      "arguments": [173632]
+    },
+    "Non-Registered Players-3": {
+      "command": "ZRANGE redis:tournament:{?}:joinedPlayersQueue 0 -1",
+      "arguments": [173632]
+    }
+  }
+}

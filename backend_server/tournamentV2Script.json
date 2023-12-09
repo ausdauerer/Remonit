@@ -1,0 +1,80 @@
+{
+  "updateInterval": 5000,
+  "args": [173632],
+  "redisClusterNodes": [
+    {
+      "host": "redis-stage-trn-cluster-0001-001.izffbp.0001.aps1.cache.amazonaws.com",
+      "port": 7000
+    },
+    {
+      "host": "redis-stage-trn-cluster-0002-001.izffbp.0001.aps1.cache.amazonaws.com",
+      "port": 7000
+    }
+  ],
+  "Tournament Players": {
+    "Registered Players": {
+      "command": "ZRANGE redis:tournament:{?}:joinQueue 0 -1",
+      "arguments": ["ARGV[0]"]
+    },
+    "Joined Players": {
+      "command": "ZRANGE redis:tournament:{?}:joinedPlayersQueue 0 -1",
+      "arguments": ["ARGV[0]"]
+    }
+  },
+  "Tournament Leaderboard": {
+    "Leaderboard": {
+      "command": "LRANGE redis:tournamentPoints:{?}:leaderboard 0 -1",
+      "arguments": ["ARGV[0]"]
+    },
+    "Active User Points": {
+      "command": "ZRANGE redis:tournamentPoints:{?}:playerRanks 0 -1 WITHSCORES",
+      "arguments": ["ARGV[0]"]
+    }
+  },
+  "Tournament Level Details": {
+    "Level": {
+      "command": "HGET redis:variantId:{?} round",
+      "arguments": ["ARGV[0]"]
+    },
+    "Qualifying Points": {
+      "command": "HGET redis:variantId:{?} qualifyingPoints",
+      "arguments": ["ARGV[0]"]
+    },
+    "Tournament Status": {
+      "command": "HGET redis:variantId:{?} status",
+      "arguments": ["ARGV[0]"]
+    },
+    "Cash Zone Active": {
+      "command": "GET redis:tournamentPoints:{?}:cashZone",
+      "arguments": ["ARGV[0]"]
+    },
+    "Rebuy States": {
+      "command": "HGET redis:variantId:{?} rebuyStatus",
+      "arguments": ["ARGV[0]"]
+    },
+    "Late Entry Status": {
+      "command": "HGET redis:variantId:{?} lateEntryStatus",
+      "arguments": ["ARGV[0]"]
+    }
+  },
+  "Player Tournament States": {
+    "Tournament State": {
+      "command": "ZRANGE redis:tournament:{?}:joinedPlayersQueue 0 -1",
+      "arguments": ["ARGV[0]"],
+      "runCommandOnResults": {
+        "command": "HGET redis:tournament:{?}:*:joinDetails tournamentState",
+        "arguments": ["ARGV[0]"]
+      }
+    }
+  },
+  "Player Tournament Active Table": {
+    "Active Table": {
+      "command": "ZRANGE redis:tournament:{?}:joinedPlayersQueue 0 -1",
+      "arguments": ["ARGV[0]"],
+      "runCommandOnResults": {
+        "command": "HGET redis:tournament:{?}:*:joinDetails activeTable",
+        "arguments": ["ARGV[0]"]
+      }
+    }
+  }
+}
